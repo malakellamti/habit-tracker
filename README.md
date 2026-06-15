@@ -1,5 +1,24 @@
-# Vue 3 + Vite
+# Habit Tracker 
 
-This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
+A web application to track daily habits with streaks and statistics.
 
-Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
+## Features
+-  Add and manage daily habits
+-  Streak tracking
+-  Weekly/monthly statistics with heatmap
+-  Dark mode
+-  Responsive design
+
+## Tech Stack
+- Vue 3 (Composition API)
+- Pinia
+- Chart.js
+- localStorage
+
+## Getting Started
+
+### Install dependencies
+npm install
+
+### Run the app
+npm run dev
