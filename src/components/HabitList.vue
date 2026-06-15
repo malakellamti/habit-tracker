@@ -1,3 +1,4 @@
+<!-- HabitList: displays all habits -->
 <template>
   <div class="habit-list">
     <HabitForm />

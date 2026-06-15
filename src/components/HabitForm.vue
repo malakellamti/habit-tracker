@@ -1,3 +1,4 @@
+<!-- HabitForm: input form to add new habits -->
 <template>
   <div class="habit-form">
     <input 

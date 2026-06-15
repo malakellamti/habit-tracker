@@ -1,3 +1,4 @@
+<!-- HabitCard: single habit item with checkbox -->
 <template>
   <div class="habit-card">
     <input 
