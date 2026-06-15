@@ -1,6 +1,7 @@
 <template>
   <div class="app">
     <h1>Habit Tracker</h1>
+   <!-- Daily habit tracking app -->   
     <HabitList />
   </div>
 </template>
