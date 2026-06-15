@@ -1,3 +1,4 @@
+// Pinia store for managing habits and localStorage persistence
 import { defineStore } from 'pinia'
 
 export const useHabitStore = defineStore('habits', {
