@@ -50,6 +50,24 @@ export const useHabitStore = defineStore('habits', {
      this.saveToLocalStorage()
      }
     },
+    getStreak(habitId) {
+     const habit = this.habits.find(h => h.id === habitId)
+    if (!habit) return 0
+
+      let streak = 0
+      let date = new Date()
+
+      while (true) {
+      const dateStr = date.toISOString().split('T')[0]
+      if (habit.completions[dateStr]) {
+         streak++
+        date.setDate(date.getDate() - 1)
+      } else {
+       break
+      }
+     }
+     return streak
+    },
     
   }
 })

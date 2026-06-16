@@ -12,6 +12,7 @@
       v-model="editedName"
       @keyup.enter="saveEdit"
     />
+    <span>Streak: {{ store.getStreak(habit.id) }} days</span>
     <button @click="startEdit" v-if="!isEditing">Edit</button>
     <button @click="saveEdit" v-if="isEditing">Save</button>
     <button @click="store.deleteHabit(habit.id)">Delete</button>
