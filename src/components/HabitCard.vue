@@ -6,7 +6,7 @@
       :checked="isCompletedToday"
       @change="toggle"
     />
-    <span v-if="!isEditing">{{ habit.name }}</span>
+    <span v-if="!isEditing">{{ habit.name }} - {{ habit.category }}</span>
     <input 
       v-if="isEditing"
       v-model="editedName"
