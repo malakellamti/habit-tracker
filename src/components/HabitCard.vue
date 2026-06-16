@@ -7,6 +7,7 @@
       @change="toggle"
     />
     <span>{{ habit.name }}</span>
+    <button @click="store.deleteHabit(habit.id)">Delete</button>
   </div>
 </template>
 

@@ -38,6 +38,11 @@ export const useHabitStore = defineStore('habits', {
       if (saved) {
         this.habits = JSON.parse(saved)
       }
-    }
+    },
+    deleteHabit(habitId) {
+      this.habits = this.habits.filter(h => h.id !== habitId)
+      this.saveToLocalStorage()
+    },
+    
   }
 })
