@@ -15,7 +15,7 @@
     <span>Streak: {{ store.getStreak(habit.id) }} days</span>
     <button @click="startEdit" v-if="!isEditing">Edit</button>
     <button @click="saveEdit" v-if="isEditing">Save</button>
-    <button @click="store.deleteHabit(habit.id)">Delete</button>
+    <button @click="confirmDelete">Delete</button>
   </div>
 </template>
 
@@ -46,5 +46,11 @@ function startEdit() {
 function saveEdit() {
   store.editHabit(props.habit.id, editedName.value)
   isEditing.value = false
+}
+
+function confirmDelete() {
+  if (confirm('Are you sure you want to delete this habit?')) {
+    store.deleteHabit(props.habit.id)
+  }
 }
 </script>
