@@ -13,6 +13,7 @@
       @keyup.enter="saveEdit"
     />
     <span>Streak: {{ store.getStreak(habit.id) }} days</span>
+    <span>Completion: {{ store.getCompletionRate(habit.id) }}%</span>  
     <button @click="startEdit" v-if="!isEditing">Edit</button>
     <button @click="saveEdit" v-if="isEditing">Save</button>
     <button @click="confirmDelete">Delete</button>

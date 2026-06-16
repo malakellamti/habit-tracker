@@ -7,10 +7,11 @@ export const useHabitStore = defineStore('habits', {
   }),
 
   actions: {
-    addHabit(name) {
+    addHabit(name, category = 'General') {
       this.habits.push({
         id: Date.now(),
         name: name,
+        category: category,
         createdAt: new Date().toISOString(),
         completions: {}
       })
@@ -44,30 +45,45 @@ export const useHabitStore = defineStore('habits', {
       this.saveToLocalStorage()
     },
     editHabit(habitId, newName) {
-     const habit = this.habits.find(h => h.id === habitId)
-    if (habit) {
-     habit.name = newName
-     this.saveToLocalStorage()
-     }
+      const habit = this.habits.find(h => h.id === habitId)
+      if (habit) {
+        habit.name = newName
+        this.saveToLocalStorage()
+      }
     },
     getStreak(habitId) {
-     const habit = this.habits.find(h => h.id === habitId)
-    if (!habit) return 0
+      const habit = this.habits.find(h => h.id === habitId)
+      if (!habit) return 0
 
       let streak = 0
       let date = new Date()
 
       while (true) {
-      const dateStr = date.toISOString().split('T')[0]
-      if (habit.completions[dateStr]) {
-         streak++
-        date.setDate(date.getDate() - 1)
-      } else {
-       break
+        const dateStr = date.toISOString().split('T')[0]
+        if (habit.completions[dateStr]) {
+          streak++
+          date.setDate(date.getDate() - 1)
+        } else {
+          break
+        }
       }
-     }
-     return streak
+      return streak
     },
-    
+    getCompletionRate(habitId) {
+      const habit = this.habits.find(h => h.id === habitId)
+      if (!habit) return 0
+
+      const totalDays = Object.keys(habit.completions).length
+      if (totalDays === 0) return 0
+
+      const createdAt = new Date(habit.createdAt)
+      const today = new Date()
+      const daysSinceCreation = Math.floor(
+        (today - createdAt) / (1000 * 60 * 60 * 24)
+      ) + 1
+
+      return Math.round((totalDays / daysSinceCreation) * 100)
+    },
+
   }
 })
