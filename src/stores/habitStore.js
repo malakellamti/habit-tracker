@@ -43,6 +43,13 @@ export const useHabitStore = defineStore('habits', {
       this.habits = this.habits.filter(h => h.id !== habitId)
       this.saveToLocalStorage()
     },
+    editHabit(habitId, newName) {
+     const habit = this.habits.find(h => h.id === habitId)
+    if (habit) {
+     habit.name = newName
+     this.saveToLocalStorage()
+     }
+    },
     
   }
 })
