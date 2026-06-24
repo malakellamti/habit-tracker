@@ -66,3 +66,41 @@ function confirmDelete() {
   }
 }
 </script>
+<style scoped>
+.habit-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  width: 100%;
+}
+
+.habit-card span {
+  font-size: 0.95rem;
+  color: #333;
+}
+
+.habit-card input[type="text"],
+.habit-card select {
+  padding: 4px 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.habit-card button {
+  padding: 4px 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background: #f5f5f5;
+  cursor: pointer;
+  font-size: 0.85rem;
+}
+
+.habit-card button:hover {
+  background: #e8e8e8;
+}
+</style>

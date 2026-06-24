@@ -41,3 +41,18 @@ onMounted(() => {
   store.loadFromLocalStorage()
 })
 </script>
+<style scoped>
+.habit-list {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.habit-list select {
+  margin-bottom: 16px;
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+</style>
