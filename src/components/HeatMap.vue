@@ -1,19 +1,24 @@
 <template>
-  <div class="heatmap">
-    <h3>Activity Heatmap</h3>
-    <div class="grid">
+  <div class="mt-8">
+    <h3 class="mb-2.5 text-gray-600 text-base">Activity Heatmap</h3>
+    <div class="grid grid-cols-13 gap-1">
       <div
         v-for="day in days"
         :key="day.date"
-        class="cell"
+        class="w-full aspect-square rounded-sm"
         :style="{ backgroundColor: getColor(day.rate) }"
         :title="`${day.date}: ${day.rate}%`"
       ></div>
     </div>
-    <div class="legend">
+    <div class="flex items-center gap-1.5 mt-2 text-xs text-gray-600">
       <span>0%</span>
-      <div class="legend-cells">
-        <div class="cell" v-for="n in [0,25,50,75,100]" :key="n" :style="{ backgroundColor: getColor(n) }"></div>
+      <div class="flex gap-1">
+        <div
+          v-for="n in [0, 25, 50, 75, 100]"
+          :key="n"
+          class="w-3.5 h-3.5 rounded-sm"
+          :style="{ backgroundColor: getColor(n) }"
+        ></div>
       </div>
       <span>100%</span>
     </div>
@@ -48,34 +53,3 @@ function getColor(rate) {
   return '#196127'
 }
 </script>
-
-<style scoped>
-.heatmap { margin-top: 2rem; }
-h3 { margin-bottom: 10px; color: #555; }
-.grid {
-  display: grid;
-  grid-template-columns: repeat(13, 1fr);
-  gap: 4px;
-}
-.cell {
-  width: 100%;
-  aspect-ratio: 1;
-  border-radius: 2px;
-}
-.legend {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  margin-top: 8px;
-  font-size: 0.75rem;
-  color: #555;
-}
-.legend-cells {
-  display: flex;
-  gap: 4px;
-}
-.legend-cells .cell {
-  width: 14px;
-  height: 14px;
-}
-</style>

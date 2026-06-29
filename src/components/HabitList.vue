@@ -1,9 +1,9 @@
 <!-- HabitList: displays all habits -->
 <template>
-  <div class="habit-list">
+  <div class="w-full flex flex-col items-center">
     <HabitForm />
-    
-    <select v-model="selectedCategory">
+
+    <select v-model="selectedCategory" class="mb-4 px-3 py-1.5 border border-gray-300 rounded text-sm">
       <option value="All">All</option>
       <option value="General">General</option>
       <option value="Health">Health</option>
@@ -13,12 +13,12 @@
     </select>
 
     <div v-if="filteredHabits.length === 0">
-      <p>No habits yet. Add one above!</p>
+      <p class="text-gray-500 text-sm">No habits yet. Add one above!</p>
     </div>
-    <HabitCard 
-      v-for="habit in filteredHabits" 
-      :key="habit.id" 
-      :habit="habit" 
+    <HabitCard
+      v-for="habit in filteredHabits"
+      :key="habit.id"
+      :habit="habit"
     />
   </div>
 </template>
@@ -41,18 +41,3 @@ onMounted(() => {
   store.loadFromLocalStorage()
 })
 </script>
-<style scoped>
-.habit-list {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.habit-list select {
-  margin-bottom: 16px;
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-</style>

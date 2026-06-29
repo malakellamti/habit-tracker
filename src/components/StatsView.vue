@@ -1,17 +1,18 @@
 <template>
-  <div class="stats">
-    <h2>Statistics</h2>
+  <div class="p-4 w-full">
+    <h2 class="text-xl font-semibold text-gray-800 mb-2">Statistics</h2>
 
-    <div class="chart-section">
-      <h3>Weekly Completion Rate</h3>
-      <canvas ref="weeklyChart"></canvas>
+    <div class="mb-8">
+      <h3 class="mb-2.5 text-gray-600 text-base">Weekly Completion Rate</h3>
+      <canvas ref="weeklyChart" class="max-h-[250px]"></canvas>
     </div>
 
-    <div class="chart-section">
-      <h3>Monthly Completion Rate</h3>
-      <canvas ref="monthlyChart"></canvas>
+    <div class="mb-8">
+      <h3 class="mb-2.5 text-gray-600 text-base">Monthly Completion Rate</h3>
+      <canvas ref="monthlyChart" class="max-h-[250px]"></canvas>
     </div>
-  <HeatMap />
+
+    <HeatMap />
   </div>
 </template>
 
@@ -93,9 +94,3 @@ onMounted(() => {
   })
 })
 </script>
-
-<style scoped>
-.stats { padding: 1rem; }
-.chart-section { margin-bottom: 2rem; }
-canvas { max-height: 250px; }
-</style>

@@ -1,19 +1,23 @@
 <!-- HabitForm: input form to add new habits -->
 <template>
-  <div class="habit-form">
-    <input 
-      v-model="habitName" 
+  <div class="flex gap-2.5 mb-5 w-full">
+    <input
+      v-model="habitName"
       placeholder="Enter a new habit..."
+      class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm"
       @keyup.enter="addHabit"
     />
-    <select v-model="habitCategory">
+    <select v-model="habitCategory" class="px-3 py-2 border border-gray-300 rounded text-sm">
       <option value="General">General</option>
       <option value="Health">Health</option>
       <option value="Work">Work</option>
       <option value="Personal">Personal</option>
       <option value="Sport">Sport</option>
     </select>
-    <button @click="addHabit">Add Habit</button>
+    <button
+      class="px-4 py-2 border-none rounded bg-emerald-500 text-white text-sm cursor-pointer hover:bg-emerald-600"
+      @click="addHabit"
+    >Add Habit</button>
   </div>
 </template>
 
@@ -33,40 +37,3 @@ function addHabit() {
   }
 }
 </script>
-<style scoped>
-.habit-form {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
-  width: 100%;
-}
-
-.habit-form input[type="text"] {
-  flex: 1;
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.95rem;
-}
-
-.habit-form select {
-  padding: 8px 12px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-size: 0.95rem;
-}
-
-.habit-form button {
-  padding: 8px 16px;
-  border: none;
-  border-radius: 4px;
-  background: #42b883;
-  color: white;
-  font-size: 0.95rem;
-  cursor: pointer;
-}
-
-.habit-form button:hover {
-  background: #389b6f;
-}
-</style>

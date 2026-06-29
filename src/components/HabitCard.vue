@@ -1,19 +1,20 @@
 <!-- HabitCard: single habit item with checkbox -->
 <template>
-  <div class="habit-card">
-    <input 
-      type="checkbox" 
+  <div class="flex items-center gap-3 px-3.5 py-2.5 mb-2 bg-white border border-gray-300 rounded-md w-full">
+    <input
+      type="checkbox"
       :checked="isCompletedToday"
       @change="toggle"
     />
-    <span v-if="!isEditing">{{ habit.name }} - {{ habit.category }}</span>
+    <span v-if="!isEditing" class="text-sm text-gray-800">{{ habit.name }} - {{ habit.category }}</span>
 
-    <input 
+    <input
       v-if="isEditing"
       v-model="editedName"
+      class="px-2 py-1 border border-gray-300 rounded"
       @keyup.enter="saveEdit"
     />
-    <select v-if="isEditing" v-model="editedCategory">
+    <select v-if="isEditing" v-model="editedCategory" class="px-2 py-1 border border-gray-300 rounded">
       <option value="General">General</option>
       <option value="Health">Health</option>
       <option value="Work">Work</option>
@@ -21,11 +22,22 @@
       <option value="Sport">Sport</option>
     </select>
 
-    <span>Streak: {{ store.getStreak(habit.id) }} days</span>
-    <span>Completion: {{ store.getCompletionRate(habit.id) }}%</span>  
-    <button @click="startEdit" v-if="!isEditing">Edit</button>
-    <button @click="saveEdit" v-if="isEditing">Save</button>
-    <button @click="confirmDelete">Delete</button>
+    <span class="text-sm text-gray-800">Streak: {{ store.getStreak(habit.id) }} days</span>
+    <span class="text-sm text-gray-800">Completion: {{ store.getCompletionRate(habit.id) }}%</span>
+    <button
+      v-if="!isEditing"
+      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+      @click="startEdit"
+    >Edit</button>
+    <button
+      v-if="isEditing"
+      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+      @click="saveEdit"
+    >Save</button>
+    <button
+      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+      @click="confirmDelete"
+    >Delete</button>
   </div>
 </template>
 
@@ -66,41 +78,3 @@ function confirmDelete() {
   }
 }
 </script>
-<style scoped>
-.habit-card {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 10px 14px;
-  margin-bottom: 8px;
-  background: white;
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  width: 100%;
-}
-
-.habit-card span {
-  font-size: 0.95rem;
-  color: #333;
-}
-
-.habit-card input[type="text"],
-.habit-card select {
-  padding: 4px 8px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-}
-
-.habit-card button {
-  padding: 4px 10px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  background: #f5f5f5;
-  cursor: pointer;
-  font-size: 0.85rem;
-}
-
-.habit-card button:hover {
-  background: #e8e8e8;
-}
-</style>
