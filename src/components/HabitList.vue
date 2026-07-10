@@ -3,7 +3,7 @@
   <div class="w-full flex flex-col items-center">
     <HabitForm />
 
-    <select v-model="selectedCategory" class="mb-4 px-3 py-1.5 border border-gray-300 rounded text-sm">
+    <select v-model="selectedCategory" class="mb-4 px-3 py-1.5 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
       <option value="All">All</option>
       <option value="General">General</option>
       <option value="Health">Health</option>
@@ -13,7 +13,7 @@
     </select>
 
     <div v-if="filteredHabits.length === 0">
-      <p class="text-gray-500 text-sm">No habits yet. Add one above!</p>
+      <p class="text-gray-500 dark:text-gray-400 text-sm">No habits yet. Add one above!</p>
     </div>
     <HabitCard
       v-for="habit in filteredHabits"

@@ -4,10 +4,10 @@
     <input
       v-model="habitName"
       placeholder="Enter a new habit..."
-      class="w-full px-3 py-2 border border-gray-300 rounded text-sm"
+      class="w-full px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100"
       @keyup.enter="addHabit"
     />
-    <select v-model="habitCategory" class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm">
+    <select v-model="habitCategory" class="flex-1 px-3 py-2 border border-gray-300 dark:border-gray-600 rounded text-sm bg-white dark:bg-gray-800 text-gray-800 dark:text-gray-100">
       <option value="General">General</option>
       <option value="Health">Health</option>
       <option value="Work">Work</option>

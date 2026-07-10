@@ -1,13 +1,13 @@
 <!-- HabitCard: single habit item with checkbox -->
 <template>
-  <div class="flex flex-col sm:flex-row sm:items-center gap-2 px-3.5 py-2.5 mb-2 bg-white border border-gray-300 rounded-md w-full">
+  <div class="flex flex-col sm:flex-row sm:items-center gap-2 px-3.5 py-2.5 mb-2 bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md w-full">
     <div class="flex items-center gap-2 flex-1 min-w-0">
       <input
         type="checkbox"
         :checked="isCompletedToday"
         @change="toggle"
       />
-      <span v-if="!isEditing" class="text-sm text-gray-800 break-words min-w-0">{{ habit.name }} - {{ habit.category }}</span>
+      <span v-if="!isEditing" class="text-sm text-gray-800 dark:text-gray-100 break-words min-w-0">{{ habit.name }} - {{ habit.category }}</span>
       <input
         v-if="isEditing"
         v-model="editedName"
@@ -24,20 +24,20 @@
     </div>
 
     <div class="flex items-center gap-2 flex-wrap">
-      <span class="text-sm text-gray-800">Streak: {{ store.getStreak(habit.id) }} days</span>
-      <span class="text-sm text-gray-800">Completion: {{ store.getCompletionRate(habit.id) }}%</span>
+      <span class="text-sm text-gray-800 dark:text-gray-100">Streak: {{ store.getStreak(habit.id) }} days</span>
+      <span class="text-sm text-gray-800 dark:text-gray-100">Completion: {{ store.getCompletionRate(habit.id) }}%</span>
       <button
         v-if="!isEditing"
-        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        class="px-2.5 py-1 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer text-sm text-gray-800 dark:text-gray-100"
         @click="startEdit"
       >Edit</button>
       <button
         v-if="isEditing"
-        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        class="px-2.5 py-1 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer text-sm text-gray-800 dark:text-gray-100"
         @click="saveEdit"
       >Save</button>
       <button
-        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        class="px-2.5 py-1 border border-gray-300 dark:border-gray-600 rounded bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600 cursor-pointer text-sm text-gray-800 dark:text-gray-100"
         @click="confirmDelete"
       >Delete</button>
     </div>
