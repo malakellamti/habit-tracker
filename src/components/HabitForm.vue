@@ -1,13 +1,13 @@
 <!-- HabitForm: input form to add new habits -->
 <template>
-  <div class="flex gap-2.5 mb-5 w-full">
+  <div class="flex flex-wrap gap-2.5 mb-5 w-full">
     <input
       v-model="habitName"
       placeholder="Enter a new habit..."
-      class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm"
+      class="w-full px-3 py-2 border border-gray-300 rounded text-sm"
       @keyup.enter="addHabit"
     />
-    <select v-model="habitCategory" class="px-3 py-2 border border-gray-300 rounded text-sm">
+    <select v-model="habitCategory" class="flex-1 px-3 py-2 border border-gray-300 rounded text-sm">
       <option value="General">General</option>
       <option value="Health">Health</option>
       <option value="Work">Work</option>
@@ -15,7 +15,7 @@
       <option value="Sport">Sport</option>
     </select>
     <button
-      class="px-4 py-2 border-none rounded bg-emerald-500 text-white text-sm cursor-pointer hover:bg-emerald-600"
+      class="flex-1 px-4 py-2 border-none rounded bg-emerald-500 text-white text-sm cursor-pointer hover:bg-emerald-600"
       @click="addHabit"
     >Add Habit</button>
   </div>

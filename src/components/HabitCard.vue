@@ -1,43 +1,46 @@
 <!-- HabitCard: single habit item with checkbox -->
 <template>
-  <div class="flex items-center gap-3 px-3.5 py-2.5 mb-2 bg-white border border-gray-300 rounded-md w-full">
-    <input
-      type="checkbox"
-      :checked="isCompletedToday"
-      @change="toggle"
-    />
-    <span v-if="!isEditing" class="text-sm text-gray-800">{{ habit.name }} - {{ habit.category }}</span>
+  <div class="flex flex-col sm:flex-row sm:items-center gap-2 px-3.5 py-2.5 mb-2 bg-white border border-gray-300 rounded-md w-full">
+    <div class="flex items-center gap-2 flex-1 min-w-0">
+      <input
+        type="checkbox"
+        :checked="isCompletedToday"
+        @change="toggle"
+      />
+      <span v-if="!isEditing" class="text-sm text-gray-800 break-words min-w-0">{{ habit.name }} - {{ habit.category }}</span>
+      <input
+        v-if="isEditing"
+        v-model="editedName"
+        class="px-2 py-1 border border-gray-300 rounded text-sm flex-1"
+        @keyup.enter="saveEdit"
+      />
+      <select v-if="isEditing" v-model="editedCategory" class="px-2 py-1 border border-gray-300 rounded text-sm">
+        <option value="General">General</option>
+        <option value="Health">Health</option>
+        <option value="Work">Work</option>
+        <option value="Personal">Personal</option>
+        <option value="Sport">Sport</option>
+      </select>
+    </div>
 
-    <input
-      v-if="isEditing"
-      v-model="editedName"
-      class="px-2 py-1 border border-gray-300 rounded"
-      @keyup.enter="saveEdit"
-    />
-    <select v-if="isEditing" v-model="editedCategory" class="px-2 py-1 border border-gray-300 rounded">
-      <option value="General">General</option>
-      <option value="Health">Health</option>
-      <option value="Work">Work</option>
-      <option value="Personal">Personal</option>
-      <option value="Sport">Sport</option>
-    </select>
-
-    <span class="text-sm text-gray-800">Streak: {{ store.getStreak(habit.id) }} days</span>
-    <span class="text-sm text-gray-800">Completion: {{ store.getCompletionRate(habit.id) }}%</span>
-    <button
-      v-if="!isEditing"
-      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
-      @click="startEdit"
-    >Edit</button>
-    <button
-      v-if="isEditing"
-      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
-      @click="saveEdit"
-    >Save</button>
-    <button
-      class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
-      @click="confirmDelete"
-    >Delete</button>
+    <div class="flex items-center gap-2 flex-wrap">
+      <span class="text-sm text-gray-800">Streak: {{ store.getStreak(habit.id) }} days</span>
+      <span class="text-sm text-gray-800">Completion: {{ store.getCompletionRate(habit.id) }}%</span>
+      <button
+        v-if="!isEditing"
+        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        @click="startEdit"
+      >Edit</button>
+      <button
+        v-if="isEditing"
+        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        @click="saveEdit"
+      >Save</button>
+      <button
+        class="px-2.5 py-1 border border-gray-300 rounded bg-gray-100 hover:bg-gray-200 cursor-pointer text-sm"
+        @click="confirmDelete"
+      >Delete</button>
+    </div>
   </div>
 </template>
 
