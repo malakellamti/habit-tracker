@@ -13,9 +13,6 @@ A web application to track daily habits with streaks and statistics.
 - Weekly and monthly statistics charts
 - Activity heatmap (90-day view)
 - Data persistence via localStorage
-
-## Planned
-
 - Dark mode
 - Responsive design
 
