@@ -1,6 +1,7 @@
 # Habit Tracker
 
 A web application to track daily habits with streaks and statistics.
+**Live demo:** https://habitutrack.netlify.app
 
 ## Features
 
